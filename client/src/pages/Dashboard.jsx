@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { Trash2, ArrowRight, Plus } from "lucide-react";
 
-const response = await axios.get("http://localhost:5000/api/ideas");
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 export default function Dashboard() {
-  const [ideas, setIdeas] = useState([]);
-  const [loading, setLoading] = useState(true);
+    const [ideas, setIdeas] = useState([]);
+    const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchIdeas = async () => {
@@ -21,7 +21,6 @@ export default function Dashboard() {
     };
     fetchIdeas();
   }, []);
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this validation report permanently?")) return;
     try {
