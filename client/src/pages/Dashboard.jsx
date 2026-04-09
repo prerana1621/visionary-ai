@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { Trash2, ArrowRight, Plus } from "lucide-react";
 
+const response = await axios.get("http://localhost:5000/api/ideas");
 export default function Dashboard() {
   const [ideas, setIdeas] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -10,7 +11,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchIdeas = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/ideas");
+        const response = await axios.get(`${API_URL}/api/ideas`);
         setIdeas(response.data);
       } catch (error) {
         console.error("Fetch failed", error);
@@ -20,11 +21,11 @@ export default function Dashboard() {
     };
     fetchIdeas();
   }, []);
-
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this validation report permanently?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/ideas/${id}`);
+        await axios.delete(`${API_URL}/api/ideas/${id}`);
       setIdeas(ideas.filter((idea) => idea._id !== id));
     } catch (error) {
       alert("Error deleting the idea.");

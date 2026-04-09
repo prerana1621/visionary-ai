@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Loader2, Sparkles, Rocket, Lightbulb } from "lucide-react";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 export default function Home() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title.trim() || !description.trim()) {
@@ -20,11 +20,11 @@ export default function Home() {
     setError("");
 
     try {
-      const response = await axios.post("http://localhost:5000/api/ideas", {
-        title,
-        description,
-      });
-      navigate(`/ideas/${response.data._id}`);
+        const response = await axios.post(`${API_URL}/api/validate`, {
+          title,
+          description,
+        });
+        navigate(`/ideas/${response.data._id}`);
     } catch (err) {
       console.error(err);
       setError(

@@ -11,17 +11,15 @@ import {
   Radar as RadarArea,
 } from "recharts";
 
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 export default function IdeaDetail() {
   const { id } = useParams();
   const [idea, setIdea] = useState(null);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const fetchIdea = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/ideas/${id}`,
-        );
+        const response = await axios.get(`${API_URL}/api/ideas/${id}`);
         setIdea(response.data);
       } catch (error) {
         console.error("Fetch error:", error);
@@ -43,7 +41,7 @@ export default function IdeaDetail() {
   const chartData = [
     { subject: "Market", value: 80 },
     { subject: "Potential", value: 85 },
-    { subject: "Profit", value: report.profitability_score },
+    { subject: "Profit", value: report.profitability_score || 0},
     { subject: "Tech", value: 80 },
     {
       subject: "Risk",
