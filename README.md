@@ -50,6 +50,19 @@
 
 ---
 
+## 🤖 AI Prompt Engineering
+
+The "brain" of Visionary AI relies on precise prompt engineering to ensure Gemini returns structured, professional data. We utilize a **System-Constraint Prompt** to force a specific JSON schema:
+
+**The Core Prompt:**
+> "Expert startup analysis. Return ONLY JSON: problem, customer, market, competitor (3 strings), tech_stack (list), risk_level (Low/Medium/High), profitability_score (0-100), justification. Input: {title} - {description}"
+
+**Why this works:**
+- **Zero-Shot JSON:** By setting `responseMimeType: "application/json"`, the backend ensures the AI never returns conversational text, only valid code.
+- **Multidimensional Scoring:** The AI is instructed to weigh technical difficulty against market competition to generate the `profitability_score`.
+
+---
+
 ## 📥 Installation & Setup
 
 ### 1. Clone the Repository
