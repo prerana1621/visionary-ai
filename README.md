@@ -58,9 +58,15 @@ git clone https://github.com/prerana1621/visionary-ai.git
 cd visionary-ai
 ```
 ### 2. Backend Setup
+The backend uses **Node.js**, **Express**, **Mongoose**, **CORS**, and **Dotenv**.
 ```bash
 cd server
-npm install
+
+# Install backend dependencies
+npm install express mongoose cors dotenv @google/generative-ai
+
+# Start the server
+npm start
 ```
 Create a `.env` file in the `/server` folder:
 
@@ -74,9 +80,14 @@ Start the server:
 npm start
 ```
 ### 3. Frontend Setup
+The frontend uses **React**, **Vite**, **Axios**, **Recharts**, **Lucide-React**, and **Tailwind CSS**.
 ```bash
 cd ../client
-npm install
+
+# Install frontend dependencies
+npm install axios react-router-dom recharts lucide-react
+
+# Run the development server
 npm run dev
 ```
 
