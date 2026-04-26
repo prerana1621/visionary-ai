@@ -4,21 +4,27 @@
   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
   <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" />
   <img src="https://img.shields.io/badge/Gemini_3.0-4285F4?style=for-the-badge&logo=google&logoColor=white" />
 </div>
 
 <div align="center">
   <img src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white" />
+  <img src="https://img.shields.io/badge/Render-46E3B7?style=flat-square&logo=render&logoColor=white" />
   <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=axios&logoColor=white" />
-  <img src="https://img.shields.io/badge/Lucide_Icons-F59E0B?style=flat-square&logo=lucide&logoColor=white" />
-  <img src="https://img.shields.io/badge/Recharts-222222?style=flat-square&logo=chartdotjs&logoColor=white" />
   <img src="https://img.shields.io/badge/Mongoose-880000?style=flat-square&logo=mongoose&logoColor=white" />
+  <img src="https://img.shields.io/badge/Recharts-222222?style=flat-square&logo=chartdotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/Lucide_Icons-F59E0B?style=flat-square&logo=lucide&logoColor=white" />
 </div>
 
 <br />
 
 **Visionary AI** is a professional AI-driven consultant platform designed for founders. Built on the MERN stack and powered by **Gemini 3.0**, it transforms simple startup ideas into comprehensive validation reports featuring market analysis, competitor tracking, and technical feasibility scores.
+
+### 🔗 Live Demo
+**[Click here to view the live project](https://visionary-ai-beta-gules.vercel.app/)**
 
 ---
 
@@ -40,6 +46,20 @@
 | **Backend** | Node.js, Express.js |
 | **Database** | MongoDB Atlas, Mongoose |
 | **AI Engine** | Google Gemini 3.0 Flash |
+| **Deployment** | Vercel (Frontend), Render (Backend) |
+
+---
+
+## 🤖 AI Prompt Engineering
+
+The "brain" of Visionary AI relies on precise prompt engineering to ensure Gemini returns structured, professional data. We utilize a **System-Constraint Prompt** to force a specific JSON schema:
+
+**The Core Prompt:**
+> "Expert startup analysis. Return ONLY JSON: problem, customer, market, competitor (3 strings), tech_stack (list), risk_level (Low/Medium/High), profitability_score (0-100), justification. Input: {title} - {description}"
+
+**Why this works:**
+- **Zero-Shot JSON:** By setting `responseMimeType: "application/json"`, the backend ensures the AI never returns conversational text, only valid code.
+- **Multidimensional Scoring:** The AI is instructed to weigh technical difficulty against market competition to generate the `profitability_score`.
 
 ---
 
@@ -47,13 +67,19 @@
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/prerana1621/visionary-ai.git](https://github.com/prerana1621/visionary-ai.git)
+git clone https://github.com/prerana1621/visionary-ai.git
 cd visionary-ai
 ```
 ### 2. Backend Setup
+The backend uses **Node.js**, **Express**, **Mongoose**, **CORS**, and **Dotenv**.
 ```bash
 cd server
-npm install
+
+# Install backend dependencies
+npm install express mongoose cors dotenv @google/generative-ai
+
+# Start the server
+npm start
 ```
 Create a `.env` file in the `/server` folder:
 
@@ -67,9 +93,14 @@ Start the server:
 npm start
 ```
 ### 3. Frontend Setup
+The frontend uses **React**, **Vite**, **Axios**, **Recharts**, **Lucide-React**, and **Tailwind CSS**.
 ```bash
 cd ../client
-npm install
+
+# Install frontend dependencies
+npm install axios react-router-dom recharts lucide-react
+
+# Run the development server
 npm run dev
 ```
 
@@ -77,7 +108,7 @@ npm run dev
 
 ## 📂 Project Structure
 
-```Plaintext
+```text
 schmooze-validator/
 ├── client/                # React Frontend (Vite)
 │   ├── public/            # Static assets & favicon
