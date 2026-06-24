@@ -20,7 +20,7 @@ export default function Home() {
     setError("");
 
     try {
-        const response = await axios.post(`${API_URL}/api/validate`, {
+        const response = await axios.post(`${API_URL}/api/ideas`, {
           title,
           description,
         });
